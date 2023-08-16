@@ -1,0 +1,34 @@
+{
+  "name": "lumos-cli",
+  "version": "1.0.0",
+  "description": "Scaffolding tool for lumosjs framework",
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/lumosjs/cli"
+  },
+  "main": "index.js",
+  "bin": {
+    "lumos": "./lumos-cli.js"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "cli",
+    "shell",
+    "generate",
+    "lumosjs",
+    "nodejs",
+    "angola",
+    "framework"
+  ],
+  "author": "vicente sombo",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "commander": "^11.0.0",
+    "mocha": "^10.2.0",
+    "shelljs": "^0.8.5",
+    "sinon": "^15.2.0"
+  }
+}

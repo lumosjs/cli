@@ -1,0 +1,46 @@
+const user = [
+    {
+        "id":"255261",
+        "name":"John",
+        "email":"john.emily@yahoo.com",
+        "country":"Canada",
+        "photo":"https://randomuser.me/api/portraits/men/77.jpg"
+    },
+    {
+        "id":"226195",
+        "name":"David",
+        "email":"david.sophia@outlook.com",
+        "country":"Japan",
+        "photo":"https://randomuser.me/api/portraits/men/68.jpg"
+    },
+    {
+        "id":"493672",
+        "name":"Alice",
+        "email":"emily.john@yahoo.com",
+        "country":"Japan",
+        "photo":"https://randomuser.me/api/portraits/women/42.jpg"
+    },
+    {
+        "id":"703642",
+        "name":"Daniel",
+        "email":"emily.david@gmail.com",
+        "country":"Canada",
+        "photo":"https://randomuser.me/api/portraits/women/55.jpg"
+    },
+    {
+        "id":"775456",
+        "name":"Emily",
+        "email":"daniel.michael@gmail.com",
+        "country":"Canada",
+        "photo":"https://randomuser.me/api/portraits/men/88.jpg"
+    },
+    {
+        "id":"989409",
+        "name":"Michael",
+        "email":"emily.david@hotmail.com",
+        "country":"Australia",
+        "photo":"https://randomuser.me/api/portraits/women/46.jpg"
+    }
+]
+
+export default user;
