@@ -1,6 +1,6 @@
 {
   "name": "lumos-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Scaffolding tool for lumosjs framework",
    "repository": {
     "type": "git",
@@ -19,16 +19,12 @@
     "generate",
     "lumosjs",
     "nodejs",
-    "angola",
     "framework"
   ],
   "author": "vicente sombo",
   "license": "MIT",
   "dependencies": {
-    "chai": "^4.3.7",
     "commander": "^11.0.0",
-    "mocha": "^10.2.0",
-    "shelljs": "^0.8.5",
-    "sinon": "^15.2.0"
+    "shelljs": "^0.8.5"
   }
 }
