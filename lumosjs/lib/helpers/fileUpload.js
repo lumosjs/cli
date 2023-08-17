@@ -13,7 +13,7 @@ import path from 'path';
 
 function uploadSingle(folder, file, allowedMimeTypes, path_public, newName) {
   return new Promise((resolve, reject) => {
-    const fileType = file.mimeType.split("/")[1];
+    const fileType = file.filename.mimeType.split("/")[1];
     if (allowedMimeTypes.length > 0 && !allowedMimeTypes.includes(fileType)) {
       const errorMessage = `Invalid file type ${fileType}`;
       return reject(errorMessage);
@@ -24,9 +24,10 @@ function uploadSingle(folder, file, allowedMimeTypes, path_public, newName) {
         reject(err);
       } else {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        const fileExt = path.extname(file.filename);
+        const fileExt = path.extname(file.filename.filename);
         const newFileName = newName ? newName : `${uniqueSuffix}${fileExt}`;
         const filePath = path.join(`${path_public}/${folder}`, newFileName);
+
 
         fs.writeFile(filePath, file.data, (err) => {
           if (err) {
@@ -50,12 +51,13 @@ function uploadSingle(folder, file, allowedMimeTypes, path_public, newName) {
  * @returns {Promise<string[]>} - A promise that resolves to an array of uploaded file paths.
  */
 
-function uploadMultiple(folder, files, allowedMimeTypes, path_public, newName) {
-  if (typeof files === "object" && Object.keys(files).length > 0) {
+
+function uploadMultiple(folder, file, allowedMimeTypes, path_public, newName) {
+  if (typeof file === "object" && Object.keys(file).length > 0) {
     const promises = [];
 
-    for (const key in files) {
-      const currentFile = files[key];
+    for (const key in file) {
+      const currentFile = file[key];
       promises.push(uploadSingle(folder, currentFile, allowedMimeTypes, path_public, newName));
     }
 
