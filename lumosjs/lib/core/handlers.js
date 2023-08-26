@@ -1,23 +1,29 @@
-// Importing modules
+// handler.js
 import parseRequestBody from "./parseRequestBody.js";
-import { routes, get, post, put, delet, web } from "./routes.js";
+import { routes, get, post, put, del, web } from "./routes.js";
 import { logger } from "#utils/logs";
 import { handleNotFound, handleBadRequest, handleMethodNotAllowed } from "#status";
 import renderView from "./renderView.js";
 import { renderFile } from "./renderFile.js";
 import { configHeaders } from "#config/headers";
 
-// Main request handling function
 async function handleRequest(request, response) {
   const { url, method } = request;
 
-  // Rendering file and configuring headers
-  renderFile(request, response);
-  configHeaders(request, response);
+  renderFile(request,response);
+  configHeaders(request,response);
+  
+   if (method === 'OPTIONS') {
+     response.writeHead(200, {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Authorization, Content-Type,X-Requested-With'
+    });
+    response.end();
+    return;
+  }
 
-  // Utility functions
-  async function status(code) {
-    response.statusCode = code;
+  async function status(body){
+    response.statusCode = body;
   }
 
   async function log(...messages) {
@@ -28,26 +34,28 @@ async function handleRequest(request, response) {
     response.end(body.toString());
   }
 
-  async function setHeader(header, value) {
-    response.setHeader(header, value);
+  async function setHeader(body,value){
+     response.setHeader(body,value);
   }
 
-  async function go(path) {
-    response.writeHead(302, { Location: path });
+  async function go(path){
+    response.writeHead(302, { Location:path});    
     response.end();
   }
+   
+
 
   async function json(data) {
-    response.writeHead(200, { "Content-Type": "application/json" });
+    response.writeHead(200, { "Content-Type": "application/json"});
     response.end(JSON.stringify(data));
   }
 
-  async function view(viewName, data) {
+
+   async function view(viewName, data) {
     await renderView(customResponse, viewName, data);
   }
 
-  // Creating the customResponse object
-  const customResponse = { log, send, json, view, setHeader, status, go };
+  const customResponse = { log, send, json ,view,setHeader, status, go};
 
   let routeFound = false;
   for (const route of routes) {
@@ -56,12 +64,13 @@ async function handleRequest(request, response) {
     if (match) {
       routeFound = true;
       if (route.method === method) {
-        if (["POST", "PUT", "DELETE"].includes(method)) {
+
+         if (method === "POST" || method === "PUT" || method === "DELETE") {
           try {
             const body = await parseRequestBody(request);
             request.body = body.data;
           } catch (error) {
-            await logger.error("Error parsing request body: " + error);
+            await logger.error("Error parsing request body:" + error);
             return handleBadRequest(request, customResponse);
           }
         }
@@ -74,11 +83,12 @@ async function handleRequest(request, response) {
 
         request.params = param;
         request.cookies = "";
-
+        
         await runMiddlewares(request, customResponse, route.handlers);
         return;
-      } else {
-        // Handling cases where the method doesn't match
+      } else if (method === "GET" && route.method === "POST" || route.method === "DELETE" || route.method === "PUT") {
+        return await handleMethodNotAllowed(request, customResponse, route.method);
+      }else if (method === "POST" || method === "DELETE" || method === "PUT" && route.method === "GET") {
         return await handleMethodNotAllowed(request, customResponse, route.method);
       }
     }
@@ -89,7 +99,6 @@ async function handleRequest(request, response) {
   }
 }
 
-// Running middlewares in sequence
 async function runMiddlewares(request, customResponse, handlers) {
   if (!handlers || handlers.length === 0) {
     return;
@@ -102,5 +111,4 @@ async function runMiddlewares(request, customResponse, handlers) {
   });
 }
 
-// Exporting functions
-export { handleRequest, get, post, put, delet , web};
+export { handleRequest, get, post, put, del, web };
