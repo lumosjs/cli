@@ -1,9 +1,8 @@
 // handler.js
 import parseRequestBody from "./parseRequestBody.js";
-import { routes, get, post, put, del, web } from "./routes.js";
+import { routes, get, post, put, del } from "./routes.js";
 import { logger } from "#utils/logs";
 import { handleNotFound, handleBadRequest, handleMethodNotAllowed } from "#status";
-import renderView from "./renderView.js";
 import { renderFile } from "./renderFile.js";
 import { configHeaders } from "#config/headers";
 
@@ -51,11 +50,7 @@ async function handleRequest(request, response) {
   }
 
 
-   async function view(viewName, data) {
-    await renderView(customResponse, viewName, data);
-  }
-
-  const customResponse = { log, send, json ,view,setHeader, status, go};
+  const customResponse = { log, send, json, setHeader, status, go};
 
   let routeFound = false;
   for (const route of routes) {
@@ -111,4 +106,4 @@ async function runMiddlewares(request, customResponse, handlers) {
   });
 }
 
-export { handleRequest, get, post, put, del, web };
+export { handleRequest, get, post, put, del };

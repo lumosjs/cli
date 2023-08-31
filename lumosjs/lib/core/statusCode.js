@@ -37,7 +37,13 @@ async function handleMethodNotAllowed(request, response, method) {
  */
 
 async function handleNotFound(request, response) {
-  response.view("404/index");
+  response.json({
+    msg: `404 not found`
+  });
+
+  await logger.error(
+    `404 not found`
+  );
   response.status(404);
 }
 

@@ -17,9 +17,6 @@ export function runApp() {
     delete: server.delete
   });
 
-  // Set up web routes
-  webRoutes({ get: server.web });
-
   // Get port and host from environment variables
   const port = process.env.APP_PORT;
   const host = process.env.APP_URL;

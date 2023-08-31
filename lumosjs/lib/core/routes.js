@@ -57,13 +57,4 @@ function delet(path, ...handlers) {
   addRoute("DELETE", `/api${path}`, ...handlers);
 }
 
-/**
- * Adds a new GET route for web content.
- * @param {string} path - Path of the route.
- * @param {...function} handlers - Middleware handlers for the route.
- */
-function web(path, ...handlers) {
-  addRoute("GET", path, ...handlers);
-}
-
-export { routes, get, post, put, delet, web };
+export { routes, get, post, put, delet };

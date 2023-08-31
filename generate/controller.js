@@ -21,7 +21,6 @@ const controllerGenerateFile = () => {
 
     export default async function create(req, res) {
         const userData = req.body;
-        const newUser = await UserService.store(userData);
         res.json(newUser);
       }
     `;

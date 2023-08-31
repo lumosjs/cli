@@ -1,5 +1,5 @@
 import http from "http";
-import { handleRequest, get, post, put, delet, web } from "#core";
+import { handleRequest, get, post, put, delet} from "#core";
 
 /**
  * Starts an HTTP server.
@@ -45,5 +45,4 @@ export default {
   post: post,
   put: put,
   delete: delet,
-  web: web
 };
