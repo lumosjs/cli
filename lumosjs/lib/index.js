@@ -1,6 +1,5 @@
 import server from "#core/server";
 import apiRoutes from "#routes/api";
-import webRoutes from "#routes/web";
 import * as dotenv from 'dotenv';
 
 /**
