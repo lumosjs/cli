@@ -44,4 +44,5 @@ lumos add:middleware middleware-name
 lumos add:model model-name
 ```
 
+
 Vicente Victor Sombo - [https://github.com/sombo20](https://github.com/sombo20)

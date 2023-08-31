@@ -1,6 +1,5 @@
 {
   "name": "lumosjs",
-  "version": "1.0.0",
   "description": "nodejs framework",
   "main": "index.js",
   "imports": {
@@ -36,11 +35,6 @@
     "busboy": "^1.6.0",
     "cookie": "^0.5.0",
     "dotenv": "^16.3.1",
-    "sinon": "^15.2.0",
     "winston": "^3.10.0"
-  },
-  "devDependencies": {
-    "chai": "^4.3.7",
-    "mocha": "^10.2.0"
   }
 }
