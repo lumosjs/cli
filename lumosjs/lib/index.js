@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv';
  */
 export function runApp() {
   dotenv.config();
+  
 
   // Set up API routes
   apiRoutes({
@@ -17,8 +18,8 @@ export function runApp() {
   });
 
   // Get port and host from environment variables
-  const port = process.env.APP_PORT;
-  const host = process.env.APP_URL;
+  const port = process.env.SERVER_PORT;
+  const host = process.env.SERVER_HOST;
 
   // Start the server
   server.list(port, host);

@@ -1,6 +1,6 @@
 // handler.js
 import parseRequestBody from "./parseRequestBody.js";
-import { routes, get, post, put, del } from "./routes.js";
+import { routes, get, post, put, delet } from "./routes.js";
 import { logger } from "#utils/logs";
 import { handleNotFound, handleBadRequest, handleMethodNotAllowed } from "#status";
 import { renderFile } from "./renderFile.js";
@@ -106,4 +106,4 @@ async function runMiddlewares(request, customResponse, handlers) {
   });
 }
 
-export { handleRequest, get, post, put, del };
+export { handleRequest, get, post, put, delet };

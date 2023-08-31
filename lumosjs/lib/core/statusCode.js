@@ -40,10 +40,6 @@ async function handleNotFound(request, response) {
   response.json({
     msg: `404 not found`
   });
-
-  await logger.error(
-    `404 not found`
-  );
   response.status(404);
 }
 
