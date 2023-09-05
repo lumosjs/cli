@@ -57,11 +57,15 @@ You should normally open an issue in the following situations:
 
 > If you open an issue to report a bug, please include as much detail as possible.
 
+## Sending a pull request
+You should typically submit a pull request in the following situations:
+
+- Fix a bug.
+- Add a new function.
+- Improve documentation.
+
+> If you submit a pull request to fix a bug, please include as much detail as possible.
 
 
-
-## Código de conduta
-Este projeto e todos os que participam dele estão sujeitos ao [Código de Conduta](CODE_OF_CONDUCT.md). Ao participar, você concorda com suas diretrizes.
-
-## Licença
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+## License
+This project is licensed under the MIT license - see the [LICENSE](LICENSE) file for details.
