@@ -11,7 +11,7 @@ const modelGenerateFile = () => {
       const filePath = path.join(process.cwd(), "app", "models")
 
       if(fs.existsSync(filePath)){
-        fs.writeFileSync(`${filePath}/${modelName}.js`, "angola de merda");
+        fs.writeFileSync(`${filePath}/${modelName}.js`, "coding");
         console.log(`Model created in ${filePath}/${modelName}.js`)
       }else{
         console.log(`Directory models does not exist:${filePath}`);
