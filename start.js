@@ -15,7 +15,7 @@ const startServer = () => {
     if (fs.existsSync(file)) {
       shell.exec(`node ${file}`);
     } else {
-      console.log("File does not exist:", file);
+      console.log("index.js file not found:", file);
     }
   });
 }
